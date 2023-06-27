@@ -38,14 +38,17 @@ exports.getRooms = function() {
 
 exports.getRoom = function(path) {
   var room = {};
+  var botRoom = {};
   path = path.toLowerCase();
 
   if (rooms[path]) {
     room.type = path;
     room.id = rooms[path];
+    botRoom.type = path;
+    botRoom.id = rooms[path];
   }
 
-//  return room;
+  return room;
 }
 
 exports.checkCommands = function(dataHash, callback) {
