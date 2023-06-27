@@ -11,7 +11,7 @@ function getAllRooms(){
   db.getAllDocuments(db_table, function(res){
     rooms = [];
     for (room in res) {
-      rooms[res[room].name] = res[room].id;
+      rooms[res[room].name] = rooms[res[room].id];
     }
   });
 }
@@ -39,7 +39,7 @@ exports.getRoom = function(path) {
   var room = {};
   path = path.toLowerCase();
 
-  if (rooms[path] == 'config') {
+  if (rooms[path]) {
     room.type = path;
     room.id = rooms[path];
   }
