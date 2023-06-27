@@ -2,6 +2,7 @@ var db_table = 'rooms';
 var db = require('./db.js');
 var mod_config = require('../config/config.js');
 var rooms;
+var botID = "99a3229635d13195ec4d0fe4e7"; //
 var roomCommands = [cmdRoomAdd, cmdToken, cmdConfig];
 
 getAllRooms();
@@ -41,7 +42,7 @@ exports.getRoom = function(path) {
 
   //if (rooms[path]) {
     room.type = path;
-    room.id = rooms[path];
+    room.id = botID; //rooms[path];
   //}
 
   return room;
