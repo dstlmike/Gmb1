@@ -10,7 +10,7 @@ exports.modName = "Rooms Control";
 
 function getAllRooms(){
   db.getAllDocuments(db_table, function(res){
-    rooms = [];
+    rooms = res;
     for (room in res) {
       rooms[res[room].name] = res[room].id;
     }
@@ -38,14 +38,14 @@ exports.getRooms = function() {
 
 exports.getRoom = function(path) {
   var room = {};
-  var botRoom = {};
+//  var botRoom = {};
   path = path.toLowerCase();
 
   if (rooms[path]) {
-    room.type = path;
-    room.id = rooms[path];
-    botRoom.type = path;
-    botRoom.id = rooms[path];
+    room.type = path,
+    room.id = rooms[path]
+ //   botRoom.type = path;
+ //   botRoom.id = rooms[path];
   }
 
   return room;
