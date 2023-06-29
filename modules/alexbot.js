@@ -1,4 +1,4 @@
-var alexBot;
+var alexBot = [];
 var alexBotCommands = [addCmd, describeCmd, editCmd, removeCmd];
 
 var db = require('../modules/db.js');
