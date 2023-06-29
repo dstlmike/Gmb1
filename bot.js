@@ -9,7 +9,7 @@ var alexBot = require('./modules/alexbot.js'); //sys-commands.js');
 var db           = require('./modules/db.js');
 //var mods         = require('./modules/mods.js');
 var commandList  = require('./modules/command-list.js');
-//var rooms        = require('./modules/rooms.js');
+var rooms        = require('./modules/rooms.js');
 
 //commands with custom actions
 //var userCmds     = require('./custom_commands/user-commands.js');
@@ -27,7 +27,7 @@ var config       = require('./config/config.js');
 var HTTPS        = require('https');
 
 //Temporarily just an array of the commands functions. Make an object with configuration values.
-var checkCommandsHSH = [alexBot, sysTriggers]; //, userCmds, userMentions, sysCommands, atEveryone, funCommands, quotes, rooms, gif, catFact, urbanDict];
+var checkCommandsHSH = [alexBot, sysTriggers, rooms]; //, userCmds, userMentions, sysCommands, atEveryone, funCommands, quotes, rooms, gif, catFact, urbanDict];
 
 exports.init = function() {
   var req = this.req;
@@ -42,7 +42,7 @@ exports.respond = function(botRoom) {
 
   var dataHash = {
     request:      request,
-  //  currentBot:   rooms.getRoom(botRoom),
+   currentBot:   rooms.getRoom(botRoom),
    // isMod:        mods.isMod(request.user_id),
    // bots:         rooms.getRooms(),
    // funMode:      sysCommands.fun_mode(),
