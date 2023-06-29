@@ -60,7 +60,7 @@ exports.respond = function(botRoom) {
 
   for(var lib in checkCommandsHSH) {
     checkCommandsHSH[lib].checkCommands(dataHash, function(check, result, attachments){
-      if (check) sendDelayedMessage(result, attachments, botRoomId);
+      if (check) sendDelayedMessage(result, attachments, botID);
     });
   }
 }
