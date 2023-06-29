@@ -32,11 +32,11 @@ function describeCmdDB(cmd, callback) {
     }
   };
 
-  updateCmdDB(cmd, updateHash, callback);
+  updateCmdDB(cmd, updateJson, callback);
 }
 
 function changeMsgCmdDB(cmd, callback) {
-  var updateHash = {
+  var updateJson = {
     $set: {
       "message": cmd["message"]
     }
