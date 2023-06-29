@@ -39,7 +39,7 @@ exports.init = function() {
   });
 }
 
-exports.respond = function(botID) {
+exports.respond = function(botRoom) {
   var request = JSON.parse(this.req.chunks[0]);
 
   var dataHash = {
@@ -62,7 +62,7 @@ exports.respond = function(botID) {
 
   for(var lib in checkCommandsHSH) {
     checkCommandsHSH[lib].checkCommands(dataHash, function(check, result, attachments){
-      if (check) sendDelayedMessage(result, attachments, botID);
+      if (check) sendDelayedMessage(result, attachments, botRoom.id);
     });
   }
 }
