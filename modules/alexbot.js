@@ -1,15 +1,15 @@
-var commands;
-var userCommands = [addCmd, describeCmd, editCmd, removeCmd];
+var alexBot;
+alexBotCommands = [addCmd, describeCmd, editCmd, removeCmd];
 
 var db = require('../modules/db.js');
-var db_table = 'alexbot2023';
+var db_table = 'alexBot';
 
 getAllCommands();
 exports.modName = "Custom Commands";
 
 function getAllCommands() {
   db.getAllDocuments(db_table, function(res){
-    var commands = res;
+    alexBot = res;
   });
 }
 
@@ -53,8 +53,8 @@ function deleteCmdFromDB(cmd, callback){
 
 //exports
 exports.checkCommands = function(dataHash, callback) {
-  for (cmd in commands) {
-    cmd = commands[cmd];
+  for (cmd in alexBot) {
+    cmd = alexBot[cmd];
     //hard coded temporarily ... maybe permanently ... losing motivation to work on this
     if(cmd.name == 'cc') // && dataHash.currentBot.type == 'hp')
       continue;
@@ -66,8 +66,8 @@ exports.checkCommands = function(dataHash, callback) {
     }
   }
 
-  for (cmd in userCommands) {
-    var test = userCommands[cmd](dataHash.request, callback);
+  for (cmd in alexBot) {
+    var test = alexBotCommands[cmd](dataHash.request, callback);
     if (test)
       return test;
   }
@@ -89,8 +89,8 @@ exports.getCmdListDescription = function () {
     {cmd: "/cmd remove 'name'", desc: "Deletes a custom command", mod: true}
   ];
 
-  for (cmd in commands) {
-    cmdArr.push({cmd: "/" + commands[cmd].name, desc: commands[cmd].description});
+  for (cmd in alexBot) {
+    cmdArr.push({cmd: "/" + alexBot[cmd].name, desc: alexBot[cmd].description});
   }
 
   return cmdArr;
@@ -110,8 +110,8 @@ function addCmd(request, callback) {
     //  return msg;
  //   }
 
-    for (cmd in commands) {
-      if (commands[cmd].name == val[1]) {
+    for (cmd in alexBot) {
+      if (alexBot[cmd].name == val[1]) {
         var msg = val[1] + " already exists";
         callback(true, msg, []);
         return msg;
@@ -124,7 +124,7 @@ function addCmd(request, callback) {
       message: val[2],
     };
 
-    commands.push(cmdHash);
+    alexBot.push(cmdHash);
     addCmdToDB(cmdHash);
     var msg = val[1] + " command added! please use \"/cmd describe " + val[1] + " <description>\" to add a description for your new command";
     callback(true, msg, []);
@@ -145,10 +145,10 @@ function describeCmd(request, callback) {
      // return msg;
   //  }
 
-    for (cmd in commands) {
-      if (commands[cmd].name == val[1].toLowerCase()) {
-        commands[cmd]["description"] = val[2];
-        describeCmdDB(commands[cmd]);
+    for (cmd in alexBot) {
+      if (alexBot[cmd].name == val[1].toLowerCase()) {
+        alexBot[cmd]["description"] = val[2];
+        describeCmdDB(alexBot[cmd]);
 
         var msg = val[1] + " description updated";
         callback(true, msg, []);
@@ -178,10 +178,10 @@ function removeCmd(request, callback) {
 
     val[1] = val[1].toLowerCase();
 
-    for (cmd in commands) {
-      if (commands[cmd].name == val[1]) {
-        deleteCmdFromDB(commands[cmd]);
-        commands.splice(cmd, 1);
+    for (cmd in alexBot) {
+      if (alexBot[cmd].name == val[1]) {
+        deleteCmdFromDB(alexBot[cmd]);
+        alexBot.splice(cmd, 1);
         var msg = val[1] + " command deleted for ever and ever and ever and ... you get it.";
         callback(true, msg, []);
         return msg;
@@ -208,10 +208,10 @@ function editCmd(request, callback) {
   //  }
 
     val[1] = val[1].toLowerCase();
-    for (cmd in commands) {
-      if (commands[cmd].name == val[1]) {
-        commands[cmd].message = val[2];
-        changeMsgCmdDB(commands[cmd]);
+    for (cmd in alexBot) {
+      if(alexBot[cmd].name == val[1]) {
+        alexBot[cmd].message = val[2];
+        changeMsgCmdDB(alexBot[cmd]);
 
         var msg = val[1] + " message updated.";
         callback(true, msg, []);
