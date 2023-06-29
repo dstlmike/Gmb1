@@ -27,9 +27,9 @@ exports.getAllDocuments = function(collection, callback) {
   });
 }
 
-exports.findDocs = function(collection, matchHash, callback) {
+exports.findDocs = function(collection, findJson, callback) {
   connect(function(db){
-    var cursor = db.collection(collection).find(matchHash);
+    var cursor = db.collection(collection).find(findJson);
     var ret = [];
     cursor.each(function(err, doc){
       if(doc != null)
