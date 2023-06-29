@@ -1,29 +1,34 @@
 /*global init*/
+var botRoom = {
+  name: `config`,
+id: `99a3229635d13195ec4d0fe4e7`
+};
+var botID = `99a3229635d13195ec4d0fe4e7`;
 
 //load modules
-var sysCommands  = require('./modules/sys-commands.js');
+//var sysCommands  = require('./modules/sys-commands.js');
 var db           = require('./modules/db.js');
-var mods         = require('./modules/mods.js');
+//var mods         = require('./modules/mods.js');
 var commandList  = require('./modules/command-list.js');
-var rooms        = require('./modules/rooms.js');
+//var rooms        = require('./modules/rooms.js');
 
 //commands with custom actions
-var userCmds     = require('./custom_commands/user-commands.js');
-var userMentions = require('./custom_commands/user-mentions.js');
-var sysTriggers  = require('./custom_commands/system-triggers.js');
-var quotes       = require('./custom_commands/quotes.js');
-var atEveryone   = require('./custom_commands/at-everyone.js');
-var funCommands  = require('./custom_commands/fun-commands.js');
-var gif          = require('./custom_commands/giphy-api.js');
-var catFact      = require('./custom_commands/cat-fact.js');
-var urbanDict    = require('./custom_commands/urban-dictionary.js');
+//var userCmds     = require('./custom_commands/user-commands.js');
+//var userMentions = require('./custom_commands/user-mentions.js');
+//var sysTriggers  = require('./custom_commands/system-triggers.js');
+//var quotes       = require('./custom_commands/quotes.js');
+//var atEveryone   = require('./custom_commands/at-everyone.js');
+//var funCommands  = require('./custom_commands/fun-commands.js');
+//var gif          = require('./custom_commands/giphy-api.js');
+//var catFact      = require('./custom_commands/cat-fact.js');
+//var urbanDict    = require('./custom_commands/urban-dictionary.js');
 
 //load config
 var config       = require('./config/config.js');
 var HTTPS        = require('https');
 
 //Temporarily just an array of the commands functions. Make an object with configuration values.
-var checkCommandsHSH = [mods, sysTriggers, userCmds, userMentions, sysCommands, atEveryone, funCommands, quotes, rooms, gif, catFact, urbanDict];
+var checkCommandsHSH = [alexbot]; //mods, sysTriggers, userCmds, userMentions, sysCommands, atEveryone, funCommands, quotes, rooms, gif, catFact, urbanDict];
 
 exports.init = function() {
   var req = this.req;
@@ -33,15 +38,15 @@ exports.init = function() {
   });
 }
 
-exports.respond = function(botRoom) {
+exports.respond = function(botID) {
   var request = JSON.parse(this.req.chunks[0]);
 
   var dataHash = {
     request:      request,
-    currentBot:   rooms.getRoom(botRoom),
-    isMod:        mods.isMod(request.user_id),
-    bots:         rooms.getRooms(),
-    funMode:      sysCommands.fun_mode(),
+  //  currentBot:   rooms.getRoom(botRoom),
+   // isMod:        mods.isMod(request.user_id),
+   // bots:         rooms.getRooms(),
+   // funMode:      sysCommands.fun_mode(),
     owner:        config.env().owner
   };
 
@@ -51,12 +56,12 @@ exports.respond = function(botRoom) {
   if (dataHash.request.sender_type == 'bot') return;
   dataHash.request.text = dataHash.request.text.trim();
 
-  if (!rooms.getRoom(botRoom).id && botRoom != 'config')
-    return;
+ // if (!rooms.getRoom(botRoom).id && botRoom != 'config')
+   // return;
 
   for(var lib in checkCommandsHSH) {
     checkCommandsHSH[lib].checkCommands(dataHash, function(check, result, attachments){
-      if (check) sendDelayedMessage(result, attachments, rooms.getRoom(botRoom).id);
+      if (check) sendDelayedMessage(result, attachments, botID);
     });
   }
 }
