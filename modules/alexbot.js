@@ -56,12 +56,14 @@ exports.checkCommands = function(dataHash, callback) {
   for (cmd in alexBot) {
     cmd = alexBot[cmd];
     //hard coded temporarily ... maybe permanently ... losing motivation to work on this
-    if(cmd.name == 'cc') // && dataHash.currentBot.type == 'hp')
-      continue;
+   // if(cmd.name == 'cc') // && dataHash.currentBot.type == 'hp')
+    //  continue;
     var cmdReg = new RegExp(cmd.regex, "i");
-    if (dataHash.request.text && cmdReg.test(dataHash.request.text)){
+  
+  if (dataHash.request.text && cmdReg.test(dataHash.request.text)){
       var val = cmdReg.exec(dataHash.request.text);
-      callback(true, cmd.message, cmd.attachments);
+      callback(true, cmd.message, []);
+//callback(true, cmd.message, cmd.attachments);
       break;
     }
   }
