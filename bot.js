@@ -7,7 +7,7 @@ var botID = "99a3229635d13195ec4d0fe4e7";
 
 //load modules
 //var sysCommands  
-var alexbot = require('./modules/alexbot.js'); //sys-commands.js');
+var alexBot = require('./modules/alexbot.js'); //sys-commands.js');
 var db           = require('./modules/db.js');
 //var mods         = require('./modules/mods.js');
 //var commandList  = require('./modules/command-list.js');
@@ -29,7 +29,7 @@ var config       = require('./config/config.js');
 var HTTPS        = require('https');
 
 //Temporarily just an array of the commands functions. Make an object with configuration values.
-var checkCommandsHSH = [alexbot]; //mods, sysTriggers, userCmds, userMentions, sysCommands, atEveryone, funCommands, quotes, rooms, gif, catFact, urbanDict];
+var checkCommandsHSH = [alexBot]; //mods, sysTriggers, userCmds, userMentions, sysCommands, atEveryone, funCommands, quotes, rooms, gif, catFact, urbanDict];
 
 exports.init = function() {
   var req = this.req;
