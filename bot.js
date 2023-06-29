@@ -1,9 +1,9 @@
 /*global init*/
 var botRoom = {
-  name: `config`,
-id: `99a3229635d13195ec4d0fe4e7`
+  name: "config",
+id: "99a3229635d13195ec4d0fe4e7"
 };
-var botID = `99a3229635d13195ec4d0fe4e7`;
+var botID = "99a3229635d13195ec4d0fe4e7";
 
 //load modules
 //var sysCommands  
