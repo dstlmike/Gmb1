@@ -1,4 +1,4 @@
-var alexBot = [];
+var alexBot;
 var alexBotCommands = [addCmd, describeCmd, editCmd, removeCmd];
 
 var db = require('../modules/db.js');
@@ -13,8 +13,8 @@ function getAllCommands() {
   });
 }
 
-function addCmdToDB(cmd, cmdHash, callback) {
-  db.addDoc(db_table, cmd, callback);
+function addCmdToDB(cmd, callback) {
+  db.addDoc(db_table, alexBotHash, callback);
 }
 
 function updateCmdDB(cmd, updateJson, callback){
@@ -42,7 +42,7 @@ function changeMsgCmdDB(cmd, callback) {
     }
   };
 
-  updateCmdDB(cmd, updateHash, callback);
+  updateCmdDB(cmd, updateJson, callback);
 }
 
 function deleteCmdFromDB(cmd, callback){
@@ -76,7 +76,7 @@ exports.checkCommands = function(dataHash, callback) {
 }
 
 exports.setAll = function(cmdHash) {
-  alexBot = cmdHash;
+  alexBot = alexBotHash;
 }
 
 exports.getAll = function() {
@@ -120,14 +120,14 @@ function addCmd(request, callback) {
       }
     }
 
-    var cmdHash = {
+    var alexBotHash = {
       name: val[1].toLowerCase(),
       regex: "^\/" + val[1] + "$",
       message: val[2]
     };
 
-    alexBot.push(cmdHash);
-    addCmdToDB(cmdHash);
+    alexBot.push(alexBotHash);
+    addCmdToDB(alexBotHash);
     var msg = val[1] + " command added! please use \"/cmd describe " + val[1] + " <description>\" to add a description for your new command";
     callback(true, msg, []);
     return msg;
