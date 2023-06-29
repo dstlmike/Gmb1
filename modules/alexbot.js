@@ -97,7 +97,7 @@ exports.getCmdListDescription = function () {
 }
 
 
-function addCmd(request, bots, isMod, callback) {
+function addCmd(request, callback) {
   var regex = /^\/cmd add (.+?) ([\s\S]+)/i;
   var reqText = request.text;
 
@@ -132,7 +132,7 @@ function addCmd(request, bots, isMod, callback) {
   }
 }
 
-function describeCmd(request, bots, isMod, callback) {
+function describeCmd(request, callback) {
   var regex = /^\/cmd describe (.+?) ([\s\S]+)/i;
   var reqText = request.text;
 
@@ -163,7 +163,7 @@ function describeCmd(request, bots, isMod, callback) {
   }
 }
 
-function removeCmd(request, bots, isMod, callback) {
+function removeCmd(request, callback) {
   var regex = /^\/cmd remove (.+)/i;
   var reqText = request.text.toLowerCase();
 
@@ -194,7 +194,7 @@ function removeCmd(request, bots, isMod, callback) {
 }
 
 
-function editCmd(request, bots, isMod, callback) {
+function editCmd(request, callback) {
   var regex = /^\/cmd edit (.+?) ([\s\S]+)/i;
   var reqText = request.text;
 
