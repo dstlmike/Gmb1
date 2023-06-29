@@ -53,7 +53,7 @@ exports.getRoom = function(path) {
 
 exports.checkCommands = function(dataHash, callback) {
   for (command in roomCommands) {
-    var test = roomCommands[command](dataHash.request, dataHash.currentBot, dataHash.owner, callback);
+    var test = roomCommands[command](dataHash.request, dataHash.currentBot, callback);
     if (test)
       return test;
   }
