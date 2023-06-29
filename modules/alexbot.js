@@ -56,7 +56,7 @@ exports.checkCommands = function(dataHash, callback) {
   for (cmd in commands) {
     cmd = commands[cmd];
     //hard coded temporarily ... maybe permanently ... losing motivation to work on this
-    if(cmd.name == 'cc'){ // && dataHash.currentBot.type == 'hp')
+    if(cmd.name == 'cc') // && dataHash.currentBot.type == 'hp')
       continue;
     var cmdReg = new RegExp(cmd.regex, "i");
     if (dataHash.request.text && cmdReg.test(dataHash.request.text)){
