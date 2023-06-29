@@ -2,7 +2,7 @@ var commands;
 var userCommands = [addCmd, describeCmd, editCmd, removeCmd];
 
 var db = require('../modules/db.js');
-var db_table = 'user_triggers';
+var db_table = 'alexbot2023';
 
 getAllCommands();
 exports.modName = "Custom Commands";
