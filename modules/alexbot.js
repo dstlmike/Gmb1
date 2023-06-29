@@ -123,7 +123,7 @@ function addCmd(request, callback) {
     var cmdHash = {
       name: val[1].toLowerCase(),
       regex: "^\/" + val[1] + "$",
-      message: val[2],
+      message: val[2]
     };
 
     alexBot.push(cmdHash);
