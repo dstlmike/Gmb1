@@ -13,20 +13,20 @@ function getAllCommands() {
   });
 }
 
-function addCmdToDB(cmd, callback) {
+function addCmdToDB(cmd, cmdHash, callback) {
   db.addDoc(db_table, cmd, callback);
 }
 
 function updateCmdDB(cmd, updateJson, callback){
-  var findHash = {
+  var findJson = {
     "name": cmd["name"]
   };
 
-  db.updateOneDoc(db_table, findHash, updateJson, callback);
+  db.updateOneDoc(db_table, findJson, updateJson, callback);
 }
 
 function describeCmdDB(cmd, callback) {
-  var updateHash = {
+  var updateJson = {
     $set: {
       "description": cmd["description"]
     }
