@@ -1,5 +1,5 @@
 var alexBot;
-alexBotCommands = [addCmd, describeCmd, editCmd, removeCmd];
+var alexBotCommands = [addCmd, describeCmd, editCmd, removeCmd];
 
 var db = require('../modules/db.js');
 var db_table = 'alexBot';
@@ -66,7 +66,7 @@ exports.checkCommands = function(dataHash, callback) {
     }
   }
 
-  for (cmd in alexBot) {
+  for (cmd in alexBotCommands) {
     var test = alexBotCommands[cmd](dataHash.request, callback);
     if (test)
       return test;
