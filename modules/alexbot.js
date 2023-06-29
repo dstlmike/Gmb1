@@ -3,7 +3,7 @@ alexBotCommands = [addCmd, describeCmd, editCmd, removeCmd];
 
 var db = require('../modules/db.js');
 var db_table = 'alexBot';
-
+//
 getAllCommands();
 exports.modName = "Custom Commands";
 
