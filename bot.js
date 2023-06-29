@@ -6,7 +6,8 @@ id: `99a3229635d13195ec4d0fe4e7`
 var botID = `99a3229635d13195ec4d0fe4e7`;
 
 //load modules
-//var sysCommands  = require('./modules/sys-commands.js');
+//var sysCommands  
+var alexbot = require('./modules/alexbot.js'); //sys-commands.js');
 var db           = require('./modules/db.js');
 //var mods         = require('./modules/mods.js');
 var commandList  = require('./modules/command-list.js');
