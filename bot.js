@@ -1,8 +1,6 @@
 /*global init*/
-var botRoom = {
-  name: "config",
-id: "99a3229635d13195ec4d0fe4e7"
-};
+var botRoomID = "99a3229635d13195ec4d0fe4e7"
+
 var botID = "99a3229635d13195ec4d0fe4e7";
 //
 //load modules
@@ -62,7 +60,7 @@ exports.respond = function(botRoom) {
 
   for(var lib in checkCommandsHSH) {
     checkCommandsHSH[lib].checkCommands(dataHash, function(check, result, attachments){
-      if (check) sendDelayedMessage(result, attachments, botRoom.id);
+      if (check) sendDelayedMessage(result, attachments, botRoomId);
     });
   }
 }
