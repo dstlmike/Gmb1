@@ -74,11 +74,11 @@ exports.checkCommands = function(dataHash, callback) {
 }
 
 exports.setAll = function(cmdHash) {
-  commands = cmdHash;
+  alexBot = cmdHash;
 }
 
 exports.getAll = function() {
-  return commands;
+  return alexBot;
 }
 
 exports.getCmdListDescription = function () {
