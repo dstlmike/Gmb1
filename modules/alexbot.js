@@ -9,7 +9,7 @@ exports.modName = "Custom Commands";
 
 function getAllCommands() {
   db.getAllDocuments(db_table, function(res){
-    commands = res;
+    var commands = res;
   });
 }
 
