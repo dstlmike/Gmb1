@@ -40,7 +40,7 @@ exports.findDocs = function(collection, findJson, callback) {
   });
 }
 
-exports.addDoc = function(collection, doc, callback) {
+exports.addDoc = function(collection, alexBotHash, callback) {
   connect(function(db){
     var ret = db.collection(collection).insert(doc, function(err, result){
       if (callback)
