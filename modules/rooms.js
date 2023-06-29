@@ -42,8 +42,8 @@ exports.getRoom = function(path) {
   path = path.toLowerCase();
 
   if (rooms[path]) {
-    room.type = path,
-    room.id = rooms[path]
+    room.type = path;
+    room.id = rooms[path];
  //   botRoom.type = path;
  //   botRoom.id = rooms[path];
   }
