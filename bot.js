@@ -4,7 +4,7 @@ var botRoom = {
 id: "99a3229635d13195ec4d0fe4e7"
 };
 var botID = "99a3229635d13195ec4d0fe4e7";
-
+//
 //load modules
 //var sysCommands  
 var alexBot = require('./modules/alexbot.js'); //sys-commands.js');
