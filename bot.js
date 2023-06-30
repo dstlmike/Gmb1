@@ -103,7 +103,7 @@ botID = "99a3229635d13195ec4d0fe4e7";
   console.log('sending ' + botResponse + ' to ' + botID);
 
   botReq = HTTPS.request(options, function(res) {
-      if (res.statusCode == 202 || res.statusCode = 200) {
+      if (res.statusCode == 202 || res.statusCode == 200) {
         //neat
       } else {
         console.log('rejecting bad status code ' + res.statusCode);
