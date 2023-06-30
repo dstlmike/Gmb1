@@ -11,8 +11,8 @@
     "mongodb": "2.2.36"
   },
   "engines": {
-    "node": "0.10.36",
-    "npm": "1.4.28"
+    "node": "",
+    "npm": ""
   },
   "repository": {
     "type": "git",
