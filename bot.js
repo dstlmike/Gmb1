@@ -1,4 +1,4 @@
-var botID = "99a3229635d13195ec4d0fe4e7";
+//var botID = "99a3229635d13195ec4d0fe4e7";
 /*global init*/
 
 //load modules
@@ -53,7 +53,7 @@ exports.respond = function(botRoom) {
   dataHash.request.text = dataHash.request.text.trim();
 
   if (!rooms.getRoom(botRoom).id && botRoom != 'config')
-    return;
+  //  return;
 
   for(var lib in checkCommandsHSH) {
     checkCommandsHSH[lib].checkCommands(dataHash, function(check, result, attachments){
@@ -87,7 +87,7 @@ function sendDelayedMessage(msg, attachments, botID) {
 
 function postMessage(botResponse, attachments, botID) {
   var options, body, botReq;
-
+botID = "99a3229635d13195ec4d0fe4e7";
   options = {
     hostname: 'api.groupme.com',
     path: '/v3/bots/post',
@@ -103,7 +103,7 @@ function postMessage(botResponse, attachments, botID) {
   console.log('sending ' + botResponse + ' to ' + botID);
 
   botReq = HTTPS.request(options, function(res) {
-      if (res.statusCode == 202) {
+      if (res.statusCode == 202 || res.statusCode = 200) {
         //neat
       } else {
         console.log('rejecting bad status code ' + res.statusCode);
